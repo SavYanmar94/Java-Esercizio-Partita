@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.Random;
 
 public class main {
 
@@ -10,16 +11,39 @@ public class main {
 		String[] Cagliari = {"Radunovic", "Zappa", "Dossena", "Obert", "Azzi", "Di Pardo", "Deiola", "Makoumbou", "Lella", "Luvumbo","Lapadula","Cagliari"};
 		String[] Parma = {"Chichizola", "Delprato","Osorio","Circati","Coulibaly","Bernabé","Estevez","Man","Sohm","Benedyczak","Vazquez","Parma"};
 		String[] Sudtirol = {"Poluzzi", "Celli", "Curto", "Vinetot", "Fiordilino", "Mazzocchi", "Belardinelli", "Zaro", "Tait", "De Col", "Odogwu", "Sudtirol"};
+		
+		ArrayList<String[]> listaSquadre = new ArrayList<>();
+		
+		listaSquadre.add(Bari);
+		listaSquadre.add(Cagliari);
+		listaSquadre.add(Parma);
+		listaSquadre.add(Sudtirol);
+		
 		ArrayList<String> marcatoriTorneo = new ArrayList<>();
+		
+		// Genera un indice casuale per selezionare una squadra casuale
+		Random random = new Random();
+		int indiceCasualeSq1 = random.nextInt(listaSquadre.size());
+		
+		 // Ottieni l'array della squadra selezionata
+		String[] Squadra1 = listaSquadre.get(indiceCasualeSq1);
+		listaSquadre.remove(indiceCasualeSq1);
+		int indiceCasualeSq2 = random.nextInt(listaSquadre.size());
+		String[] Squadra2 = listaSquadre.get(indiceCasualeSq2);
+		listaSquadre.remove(indiceCasualeSq2);
+		int indiceCasualeSq3 = random.nextInt(listaSquadre.size());
+		String[] Squadra3 = listaSquadre.get(indiceCasualeSq3);
+		listaSquadre.remove(indiceCasualeSq3);
+		String[] Squadra4 = listaSquadre.get(0);
 
 		Partita semifinale1 = new Partita();
-		semifinale1.partita(Bari, Cagliari);
+		semifinale1.partita(Squadra1, Squadra2);
 		System.out.println("La squadra " + semifinale1.winner[11]  + " va in finale ! \n");
 		System.out.println("Mentre la squadra " + semifinale1.loser[11]  + " si gioca la finale terzo-quarto posto");
 
 		
 		Partita semifinale2 = new Partita();
-		semifinale2.partita(Sudtirol, Parma);
+		semifinale2.partita(Squadra3, Squadra4);
 		System.out.println("La squadra " + semifinale2.winner[11]  + " va in finale ! \n");
 		System.out.println("Mentre la squadra " + semifinale2.loser[11]  + " si gioca la finale terzo-quarto posto \n");
 		
