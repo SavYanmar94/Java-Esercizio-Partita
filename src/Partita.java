@@ -2,8 +2,6 @@ import java.util.ArrayList;
 
 public class Partita {
 
-	//int[] playerindex1 = {1,2,3,4,5,6,7,8,9,10,11};
-	//int[] playerindex2 = {1,2,3,4,5,6,7,8,9,10,11};
 	
 	String winner[] = new String[11];
 	String loser[] = new String[11];
@@ -14,11 +12,7 @@ public class Partita {
     	System.out.println("Oggi si gioca la partita tra " + squadra1[11] + " e " + squadra2[11] + "\n");
     	System.out.println("L'arbitro fischia l'inizio della partita"  + "\n");
     	
-    	
-    	/*for (int i = 0; i < 11; i++) {
-    		playerindex1[i] = indexOf.squadra1[i];
-    	}*/
-    	
+ 
     	
     	int scoreHome = 0;
     	int scoreAway = 0;
@@ -34,7 +28,7 @@ public class Partita {
     		
     		if (esitosquadra > 0 && esitosquadra < 0.6) {
     			System.out.println("La squadra " + squadra1[11] + " sta attaccando..."  + "\n");
-    			String marcatoreHome = squadra1[(int)(Math.random()*11)];
+    			String marcatoreHome = squadra1[(int)(Math.random()*10)+1]; //escludo il portiere dai marcatori
     			
     				if(esitotiro > 0.85 && esitotiro <= 1) {
     					
@@ -47,7 +41,8 @@ public class Partita {
     					System.out.println("Al minuto " + min + " parata di " + squadra2[0] + " !"  + "\n");
     					tiriInPortaHome++;
     				} else if (esitotiro > 0.35 && esitotiro <= 0.55){
-    					System.out.println("Al minuto " + min + " tiro intercettato da un difensore della squadra " + squadra2[11]  + "\n");
+    					String DifInterc = squadra2[(int)(Math.random()*4)+1];//non considero il portiere
+    					System.out.println("Al minuto " + min + " tiro intercettato da " + DifInterc + " della squadra " + squadra2[11]  + "\n");
     				} else {
     					System.out.println("Al minuto " + min + " " + marcatoreHome + " la spara fuori."  + "\n");
     					tiriFuoriHome++;
@@ -58,7 +53,7 @@ public class Partita {
     		else if (esitosquadra > 0.6 && esitosquadra <= 1) {
     			
     			System.out.println("La squadra " + squadra2[11] + " sta attaccando..."  + "\n");
-    			String marcatoreAway = squadra2[(int)(Math.random()*11)];
+    			String marcatoreAway = squadra2[(int)(Math.random()*10)+1]; // escludo il portiere dai marcatori
 				if(esitotiro > 0.85 && esitotiro <= 1) {
 					
 					System.out.println("Al minuto " + min + " c'è il goal!" + " Ha segnato " + marcatoreAway  + "\n");
@@ -73,7 +68,8 @@ public class Partita {
 					tiriInPortaAway++;
 					
 				} else if (esitotiro > 0.35 && esitotiro <= 0.55){
-					System.out.println("Al minuto " + min + " tiro intercettato da un difensore della squadra " + squadra1[11]  + "\n");
+					String DifInterc = squadra1[(int)(Math.random()*4)+1];//non considero il portiere
+					System.out.println("Al minuto " + min + " tiro intercettato da " + DifInterc + " della squadra " + squadra1[11]  + "\n");
 					
 				} else {
 					System.out.println("Al minuto " + min + " " + marcatoreAway + " la spara fuori."  + "\n");
@@ -106,12 +102,16 @@ public class Partita {
     		winner = squadra1;
     		loser = squadra2;
     		
+    	Thread.sleep(10000);
+    		
     	} else if (scoreAway > scoreHome){
     		System.out.println("La squadra vincitrice è: " + squadra2[11]  + "\n");
     		//System.out.println("La squadra " + squadra2[11]  + " va in finale ! \n");
     		//System.out.println("Mentre la squadra " + squadra1[11]  + " si gioca la finale terzo-quarto posto.");
     		winner = squadra2;
     		loser = squadra1;
+    		
+    	Thread.sleep(10000);
     		
     	} else if ( scoreHome == scoreAway) {
     		System.out.println("La partita si rigioca");
